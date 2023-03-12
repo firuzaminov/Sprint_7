@@ -4,6 +4,10 @@ import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
 import org.junit.Before;
 import org.junit.Test;
+import ru.yandex.practikum.Courier.Courier;
+import ru.yandex.practikum.Courier.CourierClient;
+import ru.yandex.practikum.Courier.CourierGenerator;
+import ru.yandex.practikum.Courier.Credential;
 
 import static org.apache.http.HttpStatus.*;
 import static org.junit.Assert.assertEquals;
@@ -31,7 +35,7 @@ public class CourierLoginTest {
         ValidatableResponse responseLogin = courierClient.login(Credential.from(courier));
         int actualStatusCode = responseLogin.extract().statusCode();
         id = responseLogin.extract().path("id");
-        assertEquals(SC_OK,actualStatusCode);
+        assertEquals(SC_OK, actualStatusCode);
         assertNotNull(id);
     }
 

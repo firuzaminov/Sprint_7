@@ -1,4 +1,4 @@
-package ru.yandex.practikum;
+package ru.yandex.practikum.Client;
 
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.filter.Filter;
@@ -12,13 +12,13 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Client {
-    private static final String BASE_URL= "http://qa-scooter.praktikum-services.ru/";
     protected static final List<Filter> list = new ArrayList<>(
             Arrays.asList(
                     new RequestLoggingFilter(),
                     new ResponseLoggingFilter()
             )
     );
+    private static final String BASE_URL = "http://qa-scooter.praktikum-services.ru/";
 
     protected static RequestSpecification getSpec() {
         return new RequestSpecBuilder()

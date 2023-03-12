@@ -1,17 +1,19 @@
-package ru.yandex.practikum;
+package ru.yandex.practikum.Courier;
 
-public class Courier {
+public class Credential {
     private String login;
     private String password;
-    private String firstName;
 
-    public Courier(String login, String password, String firstName) {
+    public Credential(String login, String password) {
         this.login = login;
         this.password = password;
-        this.firstName = firstName;
     }
 
-    public Courier() {
+    public Credential() {
+    }
+
+    public static Credential from(Courier courier) {
+        return new Credential(courier.getLogin(), courier.getPassword());
     }
 
     public String getLogin() {
@@ -28,13 +30,5 @@ public class Courier {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
     }
 }

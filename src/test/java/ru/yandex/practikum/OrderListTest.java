@@ -5,6 +5,9 @@ import io.restassured.response.ValidatableResponse;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import ru.yandex.practikum.Order.Order;
+import ru.yandex.practikum.Order.OrderClient;
+import ru.yandex.practikum.Order.OrderGenerator;
 
 import java.util.ArrayList;
 
@@ -27,7 +30,7 @@ public class OrderListTest {
     public void cleanUp() {
         ValidatableResponse responseDelete = orderClient.cancel(track);
         int actualStatusCode = responseDelete.extract().statusCode();
-        assertEquals(SC_OK,actualStatusCode);
+        assertEquals(SC_OK, actualStatusCode);
     }
 
     @Test
@@ -37,7 +40,7 @@ public class OrderListTest {
         track = responseCreate.extract().path("track");
         ValidatableResponse responseGetOrders = orderClient.orderList();
         int statusCodeGetList = responseGetOrders.extract().statusCode();
-        assertEquals(SC_OK,statusCodeGetList);
+        assertEquals(SC_OK, statusCodeGetList);
         ArrayList<String> listOrders = responseGetOrders.extract().path("orders");
         assertNotNull(listOrders);
     }

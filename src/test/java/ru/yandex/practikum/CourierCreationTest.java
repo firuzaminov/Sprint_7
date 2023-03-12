@@ -5,6 +5,10 @@ import io.restassured.response.ValidatableResponse;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import ru.yandex.practikum.Courier.Courier;
+import ru.yandex.practikum.Courier.CourierClient;
+import ru.yandex.practikum.Courier.CourierGenerator;
+import ru.yandex.practikum.Courier.Credential;
 
 import static org.apache.http.HttpStatus.*;
 import static org.junit.Assert.assertEquals;
@@ -12,11 +16,11 @@ import static org.junit.Assert.assertTrue;
 
 
 public class CourierCreationTest {
+    private final static String ERROR_MESSAGE_400 = "Недостаточно данных для создания учетной записи";
+    private final static String ERROR_MESSAGE_409 = "Этот логин уже используется. Попробуйте другой.";
     private CourierClient courierClient;
     private Courier courier;
     private int id;
-    private final static String ERROR_MESSAGE_400 = "Недостаточно данных для создания учетной записи";
-    private final static String ERROR_MESSAGE_409 = "Этот логин уже используется. Попробуйте другой.";
 
     @Before
     public void setUp() {
@@ -37,7 +41,7 @@ public class CourierCreationTest {
         int actualStatusCode = responseCreate.extract().statusCode();
         id = responseLogin.extract().path("id");
         Boolean isCourierCreated = responseCreate.extract().path("ok");
-        assertEquals(SC_CREATED,actualStatusCode);
+        assertEquals(SC_CREATED, actualStatusCode);
         assertTrue(isCourierCreated);
     }
 
@@ -45,40 +49,40 @@ public class CourierCreationTest {
     @DisplayName("Courier creation with credits that already used")
     public void sameCourierCreatedNegative() {
         courierClient.create(courier);
-        ValidatableResponse  responseLogin = courierClient.login(Credential.from(courier));
+        ValidatableResponse responseLogin = courierClient.login(Credential.from(courier));
         id = responseLogin.extract().path("id");
         ValidatableResponse responseCreate = courierClient.create(courier);
         int statusCode = responseCreate.extract().path("code");
         String message = responseCreate.extract().path("message");
-        assertEquals(SC_CONFLICT,statusCode);
-        assertEquals(ERROR_MESSAGE_409,message);
+        assertEquals(SC_CONFLICT, statusCode);
+        assertEquals(ERROR_MESSAGE_409, message);
     }
 
     @Test
     @DisplayName("New courier can't be created without login")
     public void courierShouldHaveLogin() {
         courierClient.create(courier);
-        ValidatableResponse  responseLogin = courierClient.login(Credential.from(courier));
+        ValidatableResponse responseLogin = courierClient.login(Credential.from(courier));
         id = responseLogin.extract().path("id");
         courier.setLogin(null);
         ValidatableResponse responseCreate = courierClient.create(courier);
         int statusCode = responseCreate.extract().path("code");
         String message = responseCreate.extract().path("message");
-        assertEquals(SC_BAD_REQUEST,statusCode);
-        assertEquals(ERROR_MESSAGE_400,message);
+        assertEquals(SC_BAD_REQUEST, statusCode);
+        assertEquals(ERROR_MESSAGE_400, message);
     }
 
     @Test
     @DisplayName("New courier can't be created without password")
     public void courierShouldHavePassword() {
         courierClient.create(courier);
-        ValidatableResponse  responseLogin = courierClient.login(Credential.from(courier));
+        ValidatableResponse responseLogin = courierClient.login(Credential.from(courier));
         id = responseLogin.extract().path("id");
         courier.setPassword(null);
         ValidatableResponse responseCreate = courierClient.create(courier);
         int statusCode = responseCreate.extract().path("code");
         String message = responseCreate.extract().path("message");
-        assertEquals(SC_BAD_REQUEST,statusCode);
-        assertEquals(ERROR_MESSAGE_400,message);
+        assertEquals(SC_BAD_REQUEST, statusCode);
+        assertEquals(ERROR_MESSAGE_400, message);
     }
 }
