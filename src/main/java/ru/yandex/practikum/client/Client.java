@@ -1,4 +1,4 @@
-package ru.yandex.practikum.Client;
+package ru.yandex.practikum.client;
 
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.filter.Filter;

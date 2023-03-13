@@ -2,7 +2,7 @@ package ru.yandex.practikum.Order;
 
 import io.qameta.allure.Step;
 import io.restassured.response.ValidatableResponse;
-import ru.yandex.practikum.Client.Client;
+import ru.yandex.practikum.client.Client;
 
 import static io.restassured.RestAssured.given;
 
