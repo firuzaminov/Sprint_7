@@ -1,4 +1,4 @@
-package ru.yandex.practikum.Order;
+package ru.yandex.practikum.order;
 
 import java.util.List;
 

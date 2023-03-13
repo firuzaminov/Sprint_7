@@ -1,4 +1,4 @@
-package ru.yandex.practikum.Courier;
+package ru.yandex.practikum.courier;
 
 import java.sql.Timestamp;
 

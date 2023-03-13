@@ -7,9 +7,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import ru.yandex.practikum.Order.Order;
-import ru.yandex.practikum.Order.OrderClient;
-import ru.yandex.practikum.Order.OrderGenerator;
+import ru.yandex.practikum.order.Order;
+import ru.yandex.practikum.order.OrderClient;
+import ru.yandex.practikum.order.OrderGenerator;
 
 import static org.apache.http.HttpStatus.SC_CREATED;
 import static org.apache.http.HttpStatus.SC_OK;

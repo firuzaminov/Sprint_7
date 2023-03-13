@@ -5,9 +5,9 @@ import io.restassured.response.ValidatableResponse;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import ru.yandex.practikum.Order.Order;
-import ru.yandex.practikum.Order.OrderClient;
-import ru.yandex.practikum.Order.OrderGenerator;
+import ru.yandex.practikum.order.Order;
+import ru.yandex.practikum.order.OrderClient;
+import ru.yandex.practikum.order.OrderGenerator;
 
 import java.util.ArrayList;
 

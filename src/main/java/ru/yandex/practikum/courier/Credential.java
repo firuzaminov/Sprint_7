@@ -1,4 +1,4 @@
-package ru.yandex.practikum.Courier;
+package ru.yandex.practikum.courier;
 
 public class Credential {
     private String login;

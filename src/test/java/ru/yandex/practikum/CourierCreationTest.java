@@ -5,10 +5,10 @@ import io.restassured.response.ValidatableResponse;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import ru.yandex.practikum.Courier.Courier;
-import ru.yandex.practikum.Courier.CourierClient;
-import ru.yandex.practikum.Courier.CourierGenerator;
-import ru.yandex.practikum.Courier.Credential;
+import ru.yandex.practikum.courier.Courier;
+import ru.yandex.practikum.courier.CourierClient;
+import ru.yandex.practikum.courier.CourierGenerator;
+import ru.yandex.practikum.courier.Credential;
 
 import static org.apache.http.HttpStatus.*;
 import static org.junit.Assert.assertEquals;
